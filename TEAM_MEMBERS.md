@@ -5,3 +5,4 @@ Add your name below to join the project:
 - Tanmay Bhosale
 - Sagar Ambulge
 - Aditya Chavan
+- Vedant Kokane
