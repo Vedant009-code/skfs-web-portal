@@ -10,3 +10,4 @@ Add your name below to join the project:
 - Samruddhi Varkhade
 - Rushikesh Gayake
 - atharv Gaikwad
+- Jaimil Patel
