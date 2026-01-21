@@ -15,4 +15,6 @@ Add your name below to join the project:
 - Kunal Dhotre
 - Ketan Jadhav
 - Kaustubh Sarwade
+- Vijay More
+<br>
 --end of list--
