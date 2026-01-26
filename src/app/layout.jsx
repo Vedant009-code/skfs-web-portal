@@ -1,29 +1,43 @@
-import { Inter } from 'next/font/google'
-import './globals.css'
-import { Header } from '@/components/layout/Header'
-import { CategoryNav } from '@/components/layout/CategoryNav'
+import { Poppins } from "next/font/google";
+import "./globals.css";
 
-const inter = Inter({ subsets: ['latin'] })
+import { Header } from "@/components/layout/Header";
+import { CategoryNav } from "@/components/layout/CategoryNav";
+import Footer from "@/components/ui/Footer";
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-poppins",
+});
 
 export const metadata = {
-    title: 'Skfs Web Portal',
-    description: 'Furniture store portal',
-}
+  title: "Shree Krishna Furniture Store",
+  description: "Crafted furniture for your home",
+};
 
-export default function RootLayout({
-    children,
-}) {
-    return (
-        <html lang="en" suppressHydrationWarning>
-            <body className={inter.className}>
-                <div className="min-h-screen flex flex-col">
-                    <Header />
-                    <CategoryNav />
-                    <main className="flex-grow">
-                        {children}
-                    </main>
-                </div>
-            </body>
-        </html>
-    )
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        {/* Remix Icon CDN */}
+        <link
+          href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+          rel="stylesheet"
+        />
+      </head>
+      <body className={`${poppins.variable} font-sans antialiased`}>
+        <div className="min-h-screen flex flex-col">
+          <Header />
+          <CategoryNav />
+
+          <main className="flex-grow">
+            {children}
+          </main>
+
+          <Footer />
+        </div>
+      </body>
+    </html>
+  );
 }
