@@ -1,5 +1,8 @@
+"use client";
 
-export default function Home() {
+import Link from "next/link";
+
+export default function ServicesPage() {
   const data = [
     {
       title: "Beds",
@@ -102,7 +105,7 @@ export default function Home() {
   ];
 
   return (
-    <>
+    <div className="services-page-wrapper">
       {/* Poppins Google Font */}
       <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
@@ -110,33 +113,34 @@ export default function Home() {
       />
 
       <style>{`
-        body {
+        .services-page-wrapper {
           margin: 0;
-          font-family: 'Poppins';
+          font-family: 'Poppins', sans-serif;
           background: #f7f7f7;
         }
 
-        .sectionHeader {
+        .service-hero-header {
           text-align: center;
           max-width: 800px;
           margin: 0 auto 15px;
+          padding-top: 40px;
         }
 
-        .sectionHeader h2 {
+        .service-hero-header h2 {
           font-size: 38px;
           font-weight: 600;
           color: #222;
           margin-bottom: 10px;
         }
 
-        .sectionHeader p {
+        .service-hero-header p {
           font-size: 20px;
           color: #666;
           line-height: 1.6;
           margin: 0;
         }
 
-        .container {
+        .services-container {
           max-width: 1200px;
           margin: auto;
           padding: 40px 20px;
@@ -145,7 +149,7 @@ export default function Home() {
           gap: 28px;
         }
 
-        .card {
+        .service-card {
           background: #fff;
           border-radius: 16px;
           overflow: hidden;
@@ -155,37 +159,37 @@ export default function Home() {
           transition: transform 0.35s ease, box-shadow 0.35s ease;
         }
 
-        .card:hover {
+        .service-card:hover {
           transform: translateY(-8px);
           box-shadow: 0 20px 45px rgba(0,0,0,0.15);
         }
 
-        .card img {
+        .service-card img {
           width: 100%;
           height: 230px;
           object-fit: cover;
           transition: transform 0.4s ease;
         }
 
-        .card:hover img {
+        .service-card:hover img {
           transform: scale(1.05);
         }
 
-        .content {
+        .service-content {
           padding: 22px;
           display: flex;
           flex-direction: column;
           height: 100%;
         }
 
-        .titleRow {
+        .service-title-row {
           display: flex;
           align-items: center;
           gap: 10px;
           margin-bottom: 6px;
         }
 
-        .logo {
+        .service-logo {
           width: 26px;
           height: 26px;
           border-radius: 6px;
@@ -198,48 +202,50 @@ export default function Home() {
           font-weight: 600;
         }
 
-        h3 {
+        .service-content h3 {
           margin: 0;
           color: #ff4d00;
           font-weight: 600;
+          font-size: 1.17em;
         }
 
-        .desc {
+        .service-desc {
           font-size: 14px;
           color: #666;
           margin-bottom: 14px;
         }
 
-        strong {
+        .service-content strong {
           font-size: 14px;
           margin-bottom: 6px;
+          display: block; 
         }
 
-        ul {
+        .service-content ul {
           padding-left: 18px;
           margin: 8px 0 20px;
         }
 
-        li {
+        .service-content li {
           font-size: 13.5px;
           margin-bottom: 6px;
           color: #333;
         }
 
-        .footer {
+        .service-footer {
           margin-top: auto;
           display: flex;
           justify-content: space-between;
           align-items: center;
         }
 
-        .price {
+        .service-price {
           color: #ff4d00;
           font-weight: 600;
           font-size: 14px;
         }
 
-        .orangeBox {
+        .service-cta-box {
           background-color:#ef6c00;
           color: black;
           padding: 20px 170px;
@@ -249,18 +255,18 @@ export default function Home() {
           margin: 50px auto;
         }
 
-        .orangeBox h2 {
+        .service-cta-box h2 {
           font-size: 32px;
           margin-bottom: 16px;
         }
 
-        .orangeBox p {
+        .service-cta-box p {
           font-size: 18px;
           margin-bottom: 24px;
           line-height: 1.6;
         }
 
-        .whiteButton {
+        .service-white-btn {
           background-color: white;
           color: orange;
           border: none;
@@ -269,32 +275,40 @@ export default function Home() {
           font-weight: 600;
           border-radius: 8px;
           cursor: pointer;
-          font-family: 'Poppins';
+          font-family: 'Poppins', sans-serif;
         }
 
-        .whiteButton:hover {
+        .service-white-btn:hover {
           background-color: black;
           color: white;
         }
 
-        button {
+        .service-action-btn {
           padding: 9px 18px;
           border-radius: 10px;
           border: 1px solid #ddd;
           background: #fff;
           cursor: pointer;
-          font-family: 'Poppins';
+          font-family: 'Poppins', sans-serif;
           transition: all 0.25s ease;
+          font-size: 0.9rem;
         }
 
-        button:hover {
+        .service-action-btn:hover {
           background: #ff4d00;
           color: #fff;
           border-color: #ff4d00;
         }
+        
+        @media (max-width: 768px) {
+           .service-cta-box {
+              padding: 20px;
+              margin: 20px;
+           }
+        }
       `}</style>
 
-      <div className="sectionHeader">
+      <div className="service-hero-header">
         <h2>Our Services</h2>
         <p>
           Comprehensive furniture solutions tailored to your needs. From single
@@ -303,18 +317,18 @@ export default function Home() {
         </p>
       </div>
 
-      <div className="container">
+      <div className="services-container">
         {data.map((item, index) => (
-          <div className="card" key={index}>
+          <div className="service-card" key={index}>
             <img src={item.image} alt={item.title} />
 
-            <div className="content">
-              <div className="titleRow">
-                <div className="logo">★</div>
+            <div className="service-content">
+              <div className="service-title-row">
+                <div className="service-logo">★</div>
                 <h3>{item.title}</h3>
               </div>
 
-              <p className="desc">{item.description}</p>
+              <p className="service-desc">{item.description}</p>
 
               <strong>Key Features</strong>
               <ul>
@@ -323,16 +337,16 @@ export default function Home() {
                 ))}
               </ul>
 
-              <div className="footer">
-                <span className="price">{item.price}</span>
-                <button>Get Quote</button>
+              <div className="service-footer">
+                <span className="service-price">{item.price}</span>
+                <Link href="/contact-us" className="service-action-btn inline-block no-underline">Get Quote</Link>
               </div>
             </div>
           </div>
         ))}
       </div>
 
-      <div className="orangeBox">
+      <div className="service-cta-box">
         <h2>Ready to Get Started?</h2>
 
         <p>
@@ -340,10 +354,10 @@ export default function Home() {
           estimated prices instantly!
         </p>
 
-        <button className="whiteButton">
+        <Link href="/contact-us" className="service-white-btn inline-block no-underline">
           Request Free Quote
-        </button>
+        </Link>
       </div>
-    </>
+    </div>
   );
 }

@@ -1,7 +1,6 @@
 import { Inter } from 'next/font/google'
 import './globals.css'
-import { Header } from '@/components/layout/Header'
-import { CategoryNav } from '@/components/layout/CategoryNav'
+import ClientLayout from '@/components/layout/ClientLayout'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,13 +15,9 @@ export default function RootLayout({
     return (
         <html lang="en" suppressHydrationWarning>
             <body className={inter.className}>
-                <div className="min-h-screen flex flex-col">
-                    <Header />
-                    <CategoryNav />
-                    <main className="flex-grow">
-                        {children}
-                    </main>
-                </div>
+                <ClientLayout>
+                    {children}
+                </ClientLayout>
             </body>
         </html>
     )
