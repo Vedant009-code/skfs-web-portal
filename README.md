@@ -54,3 +54,4 @@ now hit npm run dev again
 ```bash
 npm install @supabase/ssr @supabase/supabase-js
 ```
+
