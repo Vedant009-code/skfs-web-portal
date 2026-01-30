@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { supabase } from "@/lib/supabase/client";
 
 export default function AdminDashboard() {
     const [quotes, setQuotes] = useState([]);
@@ -43,8 +44,21 @@ export default function AdminDashboard() {
         }
     };
 
-    const handleLogout = () => {
-        router.push("/");
+    const handleLogout = async () => {
+        try {
+            // Tell Supabase to sign out the user
+            const { error } = await supabase.auth.signOut();
+            if (error) throw error;
+            localStorage.clear();    // Removes all stored items
+            sessionStorage.clear();   // Removes all session items
+
+            // Redirect the user back to the login or landing page
+            router.push("/");
+
+        } catch (err) {
+            console.error("Error logging out:", err.message);
+            alert("Failed to log out. Please try again.");
+        }
     };
 
     const statuses = ["All Status", "New", "Contacted", "Finalized"];
